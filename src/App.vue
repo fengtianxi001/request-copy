@@ -1,17 +1,25 @@
 <template>
   <div class="layout">
     <RequestBrand />
-    <RequestFilters v-model:filters="filters" @clear="methods.onClear" />
+    <RequestFilters
+      v-model:filters="filters"
+      @clear="methods.onClear"
+      @setting="methods.onSetting"
+    />
     <RequestList :list="list" />
+    <RequestSettingModal ref="modal" />
   </div>
 </template>
 
 <script setup>
+import { settings } from "./stores";
 import { reactive, ref, computed } from "vue";
 import RequestBrand from "./components/RequestBrand.vue";
 import RequestFilters from "./components/RequestFilters.vue";
 import RequestList from "./components/RequestList.vue";
+import RequestSettingModal from "./components/RequestSettingModal.vue";
 
+const modal = ref(null);
 const filters = reactive({
   url: "",
   type: "all",
@@ -42,8 +50,15 @@ const methods = {
           req.request.postData?.text || ""
         );
         const headersObj = {};
+
+        const headerIgnores = settings.value.headers
+          .split(",")
+          .map((i) => i.trim().toLowerCase());
+
         req.request.headers.forEach((h) => {
-          headersObj[h.name] = h.value;
+          if (!headerIgnores.includes(h.name.toLowerCase())) {
+            headersObj[h.name] = h.value;
+          }
         });
 
         const type = utils.typeHandler(req);
@@ -60,6 +75,10 @@ const methods = {
         source.value.unshift(item);
       });
     });
+  },
+  onSetting() {
+    console.log("modal", modal.value.onOpen());
+    // modal.value?.onOpen();
   },
 };
 

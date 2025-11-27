@@ -1,7 +1,19 @@
 <template>
   <div class="request-filters">
     <div class="request-filters-list">
-      <Button size="mini" @click="emits('clear')">清空所有</Button>
+      <Button type="primary" size="mini" @click="emits('setting')">
+        <template #icon>
+          <IconSettings />
+        </template>
+      </Button>
+      <Button
+        type="primary"
+        status="danger"
+        size="mini"
+        @click="emits('clear')"
+      >
+        清空
+      </Button>
       <RadioGroup v-model="form.type" type="button" size="mini">
         <Radio value="all">All</Radio>
         <Radio value="xhr">XHR</Radio>
@@ -21,12 +33,13 @@
 <script setup lang="ts">
 import { Button, Input, RadioGroup, Radio } from "@arco-design/web-vue";
 import { computed } from "vue";
+import { IconSettings } from "@arco-design/web-vue/es/icon";
 
 const props = defineProps({
   filters: Object,
 });
 
-const emits = defineEmits(["update:filters", "clear"]);
+const emits = defineEmits(["update:filters", "clear", "setting"]);
 
 const form = computed({
   get: () => props.filters!,
