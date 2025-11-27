@@ -1,6 +1,6 @@
 {
-  "name": "crx-devtools",
-  "version": "0.0.1",
+  "name": "request-copy",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite build --watch --mode development",
     "build": "vite build"
