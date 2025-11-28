@@ -4,6 +4,6 @@
 
 
 <h1>
-  <img src="https://raw.githubusercontent.com/fengtianxi001/Chrome-RequestCopy/refs/heads/main/screenshots/screenshots01.png" title="screenshot">
+  <img src="https://github.com/fengtianxi001/Chrome-RequestCopy/blob/main/screenshots/screenshot01.png" title="screenshot">
 </h1>
 
