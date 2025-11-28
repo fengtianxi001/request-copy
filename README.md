@@ -4,6 +4,6 @@
 
 
 <h1>
-  <img src="https://github.com/fengtianxi001/MF-TurbineMonitor/blob/master/screenshots/screenshot01.png?raw=true" title="screenshot">
+  <img src="https://raw.githubusercontent.com/fengtianxi001/Chrome-RequestCopy/refs/heads/main/screenshots/screenshots01.png" title="screenshot">
 </h1>
 
